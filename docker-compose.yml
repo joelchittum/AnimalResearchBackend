@@ -1,0 +1,71 @@
+version:                '3.7'
+services:
+  CouchbaseResearch:
+    image:              researchcouchbase
+    ports:
+      - 8091:8091
+    volumes:
+      - type:           bind
+        source:        /research/couchbase
+        target:        /opt/couchbase/var
+    networks:
+      - AnimalResearchProject
+
+  NodeServerResearch:
+    image:              researchnodeserver
+    environment:
+      - NAMESPACE= 10.7.1.12
+      - USERNAME=Administrator
+      - PASSWORD=MarioLuna@2018
+      - COUCHSERVICE=CouchbaseResearch
+      - PROTOCOL=http
+      - PORT=80
+    networks:
+      - AnimalResearchProject
+
+  NginxResearch:
+    image:              researchnginx
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: /research/ui
+        target: /ui
+    networks:
+      - AnimalResearchProject
+
+  GeoserverResearch:
+    image:              researchgeoserver
+    volumes:
+      - type: bind
+        source: /research/data_dir
+        target: /var/local/geoserver
+      - type: bind
+        source: /research/useruploads_dir
+        target: /useruploads_dir
+    networks:
+      - AnimalResearchProject
+
+  CherrypyResearch:
+    image:              researcherrypy
+    volumes:
+      - type: bind
+        source: /research/download
+        target: /download
+    networks:
+      - AnimalResearchProject
+
+  PostgisResearch:
+    image:              researchpostgis
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - type:           bind
+        source: /research/postgis
+        target:         /var/lib/postgresql/data
+    networks:
+      - AnimalResearchProject
+
+networks:
+  AnimalResearchProject:

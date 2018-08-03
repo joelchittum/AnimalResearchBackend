@@ -1,0 +1,29 @@
+{
+  "name": "NodeServer",
+  "version": "0.0.1",
+  "private": true,
+
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+
+  "dependencies": {
+    "couchbase": "latest",
+    "express": "latest",
+    "cors": "latest",
+    "node-cron": "latest",
+    "serve-favicon": "latest",
+    "morgan": "latest",
+    "cookie-parser": "latest",
+    "extdirect": "latest",
+    "deepmerge": "latest",
+    "console-stamp": "latest",
+    "pug": "latest",
+    "jsonwebtoken": "latest",
+    "node-cryptojs-aes": "latest"
+  },
+
+  "devDependencies": {
+    "nodemon": "latest"
+  }
+}
