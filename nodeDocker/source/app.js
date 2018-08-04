@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var direct = require('extdirect');
 var config = require('/server/utils/config');
-var data = require('/server/utils/data');
 var app = express();
 
 require("console-stamp")(console);
@@ -99,4 +98,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-

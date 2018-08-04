@@ -35,7 +35,7 @@ var config = {
     n1qlService: process.env.COUCHSERVICE + ":8093",
     ftsService: process.env.COUCHSERVICE + ":8094",
     hostName: process.env.COUCHSERVICE,
-    bucket: process.env.,
+    bucket: process.env.ANIMALBUCKET,
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
     dataPath: "",
@@ -43,16 +43,16 @@ var config = {
     indexType: "gsi",
     indexerStorageMode: "forestdb",
     showQuery: false,
-    indexMemQuota: 2048,
-    dataMemQuota: 1024,
-    ftsMemoryQuota: 1024,
+    indexMemQuota: 512,
+    dataMemQuota: 256,
+    ftsMemoryQuota: 256,
     thresholdItemCount: 31565,
 
     ftsIndex: {
       type: "fulltext-index",
-      name: process.env.MAPSBUCKET,
+      name: process.env.ANIMALBUCKET,
       sourceType: "couchbase",
-      sourceName: process.env.MAPSBUCKET,
+      sourceName: process.env.ANIMALBUCKET,
 
       planParams: {
         maxPartitionsPerPIndex: 32,
@@ -108,4 +108,3 @@ var config = {
 };
 
 module.exports = config;
-
