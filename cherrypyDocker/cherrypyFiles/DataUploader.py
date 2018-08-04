@@ -1,9 +1,4 @@
-import random,string
-
-import os
-import os.path
-
-import cherrypy
+import random,string,os,os.path,cherrypy
 from cherrypy.lib import static
 
 localDir = os.path.dirname(__file__)
